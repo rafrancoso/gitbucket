@@ -7,7 +7,7 @@
 
 set -e
 
-GITBUCKET_VERSION=2.1
+GITBUCKET_VERSION=4.17.0
 
 if [ ! -f gitbucket.conf ]; then
   echo "gitbucket.conf not found, aborting"
@@ -44,7 +44,7 @@ sudo rm -f "$GITBUCKET_LOG_DIR/run.log"
 
 echo "Copying gitbucket.conf to $GITBUCKET_DIR"
 sudo cp gitbucket.conf $GITBUCKET_DIR
-if [ `isUbuntu` ] || [ `isRedHat` ]; then
+if [ `isUbuntu` ] || [ `isRedHat` ] || [ `isDebian` ]; then
   sudo cp gitbucket.init "$GITBUCKET_SERVICE"
   # Install gitbucket as a service that starts when system boots
   sudo chown root:root $GITBUCKET_SERVICE
